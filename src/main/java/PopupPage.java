@@ -1,7 +1,12 @@
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class PopupPage extends BasePage
 {
@@ -22,8 +27,10 @@ public class PopupPage extends BasePage
 
     public void clickOnPopup ()
     {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(iframe));
         driver.switchTo().frame(iframe);
-        close.click();
+        wait.until(ExpectedConditions.visibilityOf(close)).click();
     }
 
     public void clickPrihvati()
