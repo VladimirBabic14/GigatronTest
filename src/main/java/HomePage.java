@@ -11,6 +11,15 @@ public class HomePage extends BasePage
     @FindBy(css = "div[id='header__center__searchbox'] div i[class='fa fa-search']")
     WebElement lupa;
 
+    @FindBy(css = "#product-529556 h4")
+    WebElement getResult;
+
+    @FindBy(css = "#product-529520 .item__bottom__cart")
+    WebElement addToCartSamsung;
+
+    @FindBy(css = "#header__center__login__and__cart .icon-number")
+    WebElement getCartNumberOfProduct;
+
     public HomePage(ChromeDriver driver)
     {
         this.driver = driver;
@@ -20,6 +29,15 @@ public class HomePage extends BasePage
     {
         search.sendKeys(text);
         lupa.click();
+    }
+
+    public void AddToCartSamsung()
+    {
+        addToCartSamsung.click();
+    }
+    public String getCart()
+    {
+       return getCartNumberOfProduct.getText();
     }
 }
 
